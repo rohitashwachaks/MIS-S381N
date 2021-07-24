@@ -1,0 +1,707 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "6bc3bd41",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"RESTAURANT\"].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "35fadc3c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\r\n",
+    "from pandas import  Series, DataFrame\r\n",
+    "%pylab inline"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "76539ee8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv(\"NYC_Restaurants.csv\", dtype=str)\r\n",
+    "print(\"#rows:{rows}, #columns: {columns}\".format(rows = df.shape[0], columns = df.shape[1]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "124ab050",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.drop(columns=[\"Unnamed: 0\"], inplace=True)\r\n",
+    "df.head(2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "4c394d33",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"RESTAURANT\"] = df.apply(lambda x: \" \".join(x[[\"DBA\",\"BUILDING\",\"STREET\",\"ZIPCODE\",\"BORO\"]]), axis=1)\r\n",
+    "df.head(2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "1c842179",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"RESTAURANT\"].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "57e02a9c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"RESTAURANT\"] = df.apply(lambda x: \" \".join(x[[\"DBA\",\"BUILDING\",\"STREET\",\"ZIPCODE\",\"BORO\"]].apply(lambda x: x.rstrip())), axis=1)\r\n",
+    "df.head(2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "d27ab54d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"RESTAURANT\"].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "1e3d5d99",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"RESTAURANT\"].value_counts().keys()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "99bf931e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "len(df[\"RESTAURANT\"].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "1d0bebe6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Number of Unique Restaurants: \", len(df[\"RESTAURANT\"].value_counts()))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "f207c268",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"DBA\"].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "918b80b5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"DBA\"].value_counts().items()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "75c884c1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[df[\"DBA\"].value_counts().items()]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "28cf2098",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list(df[\"DBA\"].value_counts().items())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "b92b603b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[x if x[1] > 1 for x in df[\"DBA\"].value_counts().items()]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "34575926",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[x[0] for x in df[\"DBA\"].value_counts().items()]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "a786c9ff",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[x[0] if x[1]>1 else pass for x in df[\"DBA\"].value_counts().items()]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "d5419bf1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[x[0] if x[1]>1 else continue for x in df[\"DBA\"].value_counts().items()]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "74ba71a7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[x[0] if x[1]>1 else \"-\" for x in df[\"DBA\"].value_counts().items()]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "556e7eb4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[x0  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "abd12671",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[(x0,x1)  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "9aef9d22",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[(x0,x1)  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1].sort()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "61f9b303",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "d = [(x0,x1)  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1].sort()\r\n",
+    "d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "f14accd2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "d = [(x0,x1)  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1].sort()\r\n",
+    "d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "0ea80d06",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "d = [x1  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1].sort()\r\n",
+    "d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "5db69abf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "d = sorted([x1  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "e68292f9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sorted([x1  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "6aab053f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "max([x1  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "2d423fca",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "min([x1  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "e6f1d6fe",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[(x0,x1)  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "e439d6bd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[(x0,x1)  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "1d412891",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "lis = [(x0,x1)  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]\r\n",
+    "\r\n",
+    "from operator import itemgetter\r\n",
+    "max(lis,key=itemgetter(1))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "743e00c3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "lis = [(x0,x1)  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]\r\n",
+    "\r\n",
+    "from operator import itemgetter\r\n",
+    "% timeit max(lis,key=itemgetter(1))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "573bbac4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "lis = [(x0,x1)  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]\r\n",
+    "\r\n",
+    "from operator import itemgetter\r\n",
+    "%timeit max(lis,key=itemgetter(1))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "fe4d32cf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%timeit max(lis,key=lambda item:item[1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "ef262bae",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "[(x0  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1].len()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "5dce7aaf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Number of Chains in DataFrame: \",len([(x0  for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "e9c7ebc7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Number of Chains in DataFrame: \",len([x0 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "b2218f83",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = dict([x0 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1])\r\n",
+    "chains\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len([x0 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "id": "0c9a29ff",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = {x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len([x0 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "5812ec86",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = {x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "type(chains)\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len([x0 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "id": "62ccd8d4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = {x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len([x0 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "0f285af4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = {x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "\r\n",
+    "print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "f5ec6c4d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plot(chains)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "8a6423aa",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"DBA\"].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "id": "165f319a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "type(df[\"DBA\"].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "af1402da",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "DataFrame(df[\"DBA\"].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "id": "db2d95f2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts(), columns=[\"Frequency\"])#[]{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "f9c378f6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts(), columns=[\"Frequency\"])#[]{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "id": "d8e588f9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts())#[]{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "3989974d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts())#[]{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains[chains>1]\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "bdee24ab",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts())#[]{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains[[chains>1]]\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "id": "5406db95",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts())#[]{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains[chains>1]\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "bb6bddf7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts())#[]{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains[chains[\"DBA\"]>1]\r\n",
+    "# print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "id": "a27ce123",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts()) #{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains[chains[\"DBA\"]>1]\r\n",
+    "print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "id": "14506a57",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts()) #{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains = chains[chains[\"DBA\"]>1]\r\n",
+    "print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "id": "f6e7a062",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts()) #{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains = chains[chains[\"DBA\"]>1]\r\n",
+    "print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "4bf9358c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains = DataFrame(df[\"DBA\"].value_counts()) #{x0: x1 for x0, x1 in df[\"DBA\"].value_counts().items() if x1 > 1}\r\n",
+    "chains = chains[chains[\"DBA\"]>1]\r\n",
+    "print(\"Number of Chains in DataFrame: \",len(chains))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "id": "d0c9398b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "7f653f1e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plot(chains)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "id": "4cfc1fe2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df[\"RESTAURANT\"].unique()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "id": "8e35e20e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "len(df[\"RESTAURANT\"].unique())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "id": "15ca184c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Number of Unique Restaurants: \", len(df[\"RESTAURANT\"].unique()))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 65,
+   "id": "708bdca3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "chains.head(5)"
+   ]
+  }
+ ],
+ "metadata": {},
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
