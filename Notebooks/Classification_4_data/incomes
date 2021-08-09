@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box, style="filled", color="black"] ;
+0 [label="marital_status[T.Married-civ-spouse] <= 0.5\nentropy = 0.806\nsamples = 22792\nvalue = [17170, 5622]", fillcolor="#eeaa7a"] ;
+1 [label="capital_gain <= 7073.5\nentropy = 0.355\nsamples = 12246\nvalue = [11423, 823]", fillcolor="#e78a47"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="education_num <= 12.5\nentropy = 0.29\nsamples = 12028\nvalue = [11417, 611]", fillcolor="#e68844"] ;
+1 -> 2 ;
+3 [label="entropy = 0.174\nsamples = 9629\nvalue = [9378, 251]", fillcolor="#e6843e"] ;
+2 -> 3 ;
+4 [label="entropy = 0.61\nsamples = 2399\nvalue = [2039, 360]", fillcolor="#ea975c"] ;
+2 -> 4 ;
+5 [label="capital_gain <= 8296.0\nentropy = 0.182\nsamples = 218\nvalue = [6, 212]", fillcolor="#3fa0e6"] ;
+1 -> 5 ;
+6 [label="entropy = 0.863\nsamples = 14\nvalue = [4, 10]", fillcolor="#88c4ef"] ;
+5 -> 6 ;
+7 [label="entropy = 0.079\nsamples = 204\nvalue = [2, 202]", fillcolor="#3b9ee5"] ;
+5 -> 7 ;
+8 [label="education_num <= 12.5\nentropy = 0.994\nsamples = 10546\nvalue = [5747, 4799]", fillcolor="#fbeade"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="capital_gain <= 5095.5\nentropy = 0.923\nsamples = 7385\nvalue = [4889, 2496]", fillcolor="#f2c19e"] ;
+8 -> 9 ;
+10 [label="entropy = 0.885\nsamples = 7006\nvalue = [4883, 2123]", fillcolor="#f0b88f"] ;
+9 -> 10 ;
+11 [label="entropy = 0.117\nsamples = 379\nvalue = [6, 373]", fillcolor="#3c9fe5"] ;
+9 -> 11 ;
+12 [label="capital_gain <= 5095.5\nentropy = 0.844\nsamples = 3161\nvalue = [858, 2303]", fillcolor="#83c2ef"] ;
+8 -> 12 ;
+13 [label="entropy = 0.905\nsamples = 2665\nvalue = [855, 1810]", fillcolor="#97cbf1"] ;
+12 -> 13 ;
+14 [label="entropy = 0.053\nsamples = 496\nvalue = [3, 493]", fillcolor="#3a9ee5"] ;
+12 -> 14 ;
+}
