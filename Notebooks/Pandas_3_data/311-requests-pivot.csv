@@ -1,0 +1,52 @@
+Complaint Type,Borough,Status,Agency,count
+Collection Truck Noise,BROOKLYN,Closed,DSNY,6
+Collection Truck Noise,MANHATTAN,Closed,DSNY,5
+Collection Truck Noise,QUEENS,Closed,DSNY,4
+Collection Truck Noise,STATEN ISLAND,Closed,DSNY,1
+Noise,BRONX,Closed,DEP,40
+Noise,BRONX,Open,DEP,75
+Noise,BROOKLYN,Closed,DEP,85
+Noise,BROOKLYN,Open,DEP,442
+Noise,BROOKLYN,Started,DEP,9
+Noise,MANHATTAN,Closed,DEP,131
+Noise,MANHATTAN,Open,DEP,928
+Noise,MANHATTAN,Started,DEP,2
+Noise,QUEENS,Closed,DEP,131
+Noise,QUEENS,Open,DEP,269
+Noise,STATEN ISLAND,Closed,DEP,34
+Noise,STATEN ISLAND,Open,DEP,36
+Noise,STATEN ISLAND,Started,DEP,2
+Noise - Commercial,BRONX,Closed,NYPD,163
+Noise - Commercial,BROOKLYN,Assigned,NYPD,3
+Noise - Commercial,BROOKLYN,Closed,NYPD,695
+Noise - Commercial,MANHATTAN,Assigned,NYPD,3
+Noise - Commercial,MANHATTAN,Closed,NYPD,1219
+Noise - Commercial,MANHATTAN,Open,NYPD,1
+Noise - Commercial,QUEENS,Assigned,NYPD,5
+Noise - Commercial,QUEENS,Closed,NYPD,401
+Noise - Commercial,STATEN ISLAND,Closed,NYPD,42
+Noise - Helicopter,BROOKLYN,Open,EDC,21
+Noise - Helicopter,MANHATTAN,Open,EDC,63
+Noise - Helicopter,QUEENS,Open,EDC,9
+Noise - House of Worship,BRONX,Closed,NYPD,1
+Noise - House of Worship,BROOKLYN,Closed,NYPD,24
+Noise - House of Worship,MANHATTAN,Closed,NYPD,3
+Noise - House of Worship,QUEENS,Closed,NYPD,7
+Noise - Park,BRONX,Closed,NYPD,2
+Noise - Park,MANHATTAN,Closed,NYPD,17
+Noise - Park,QUEENS,Closed,NYPD,11
+Noise - Street/Sidewalk,BRONX,Assigned,NYPD,2
+Noise - Street/Sidewalk,BRONX,Closed,NYPD,107
+Noise - Street/Sidewalk,BROOKLYN,Assigned,NYPD,1
+Noise - Street/Sidewalk,BROOKLYN,Closed,NYPD,207
+Noise - Street/Sidewalk,MANHATTAN,Assigned,NYPD,1
+Noise - Street/Sidewalk,MANHATTAN,Closed,NYPD,608
+Noise - Street/Sidewalk,QUEENS,Closed,NYPD,100
+Noise - Street/Sidewalk,STATEN ISLAND,Closed,NYPD,19
+Noise - Vehicle,BRONX,Closed,NYPD,53
+Noise - Vehicle,BROOKLYN,Closed,NYPD,181
+Noise - Vehicle,BROOKLYN,Open,NYPD,2
+Noise - Vehicle,MANHATTAN,Closed,NYPD,228
+Noise - Vehicle,QUEENS,Closed,NYPD,75
+Noise - Vehicle,STATEN ISLAND,Assigned,NYPD,1
+Noise - Vehicle,STATEN ISLAND,Closed,NYPD,17
